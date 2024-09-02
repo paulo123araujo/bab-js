@@ -1,0 +1,6 @@
+<header class="letters-section" >
+<% letters.forEach(function(letter) { %>
+    <div class="letter-box" <% if(isValid === true) { %>style="background-color: #aaff00; color: #232323"<% } else if(isValid === false) { %>style="background-color: #ff0000; color: #f2f2f2"<% } %>><%= letter %></div>
+<% }); %>
+<div class="letter-box icon" hx-get="/api/start" hx-trigger="click" hx-swap="outerHTML" hx-target=".letters-section"><img src="https://www.svgrepo.com/show/376180/retry.svg" /></div>
+</header>

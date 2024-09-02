@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Be-a-Ba</title>
+    <link rel="stylesheet" href="./main.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="./favicon_io/site.webmanifest">
+</head>
+<body>
+  <div class="container">
+    <header class="letters-section" hx-get="/api/start" hx-trigger="load" hx-swap="outerHTML" hx-target=".letters-section">
+      <div class="letter-box">A</div>
+      <div class="letter-box">B</div>
+      <div class="letter-box">C</div>
+    </header>
+
+    <main class="input-section">
+        <form hx-post="/api/send-word" hx-swap="outerHTML" hx-target=".letters-section">
+            <input
+                type="text"
+                name="word"
+                id="word"
+                placeholder="Digite uma palavra"
+                hx-post="/api/send-word"
+                hx-trigger="keyup delay:500ms changed"
+                hx-swap="outerHTML"
+                hx-target=".letters-section"
+                hx-sync="closest form:abort"
+            />
+        </form>
+    </main>
+
+    <footer class="footer">
+      <p><strong>Como jogar</strong>: Dado as 3 letras no topo, digite no campo palavras que contenham as três letras; Digitando uma palavra existente no dicionário português que contenha as 3 letras, você ganha.</p>
+    </footer>
+  </div>
+    <script src="https://unpkg.com/htmx.org@2.0.2"></script>
+</body>
+</html>
